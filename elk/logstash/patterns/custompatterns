@@ -1,0 +1,26 @@
+EXTTZ (?:[PMCE][SD]T|UTC|GMT)
+TZDELTA [+-]\d{4}
+MS ([0-9]{1,4})
+PIPE [|]
+COLON [:]
+LEFT_BRACKET \[
+RIGHT_BRACKET \]
+DTSTAMP %{YEAR} %{MONTH} %{MONTHDAY} %{HOUR}:%{MINUTE}:%{SECOND}:%{MS} %{EXTTZ} %{TZDELTA}
+CSTWORD [A-Za-z_]+
+MEDIATION_COMPONENT [A-Za-z]+_[A-Za-z]+
+TRANSACTION_ID ([a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12})|(N\/A)
+SERVICE [A-Za-z]+\.[A-Za-z]+
+VERSION [v]?\d+\.\d+
+OPERATION [A-Za-z]+
+EVENT_TYPE (START|END|ERROR|Request to System|Response from System|Request to MSISDNBaRead System|Response from MSISDNBaRead System|File Info|Content of file|ValidateCustomer Response|Request to ESM|Request to SendLifecycleEvent|Request StorageMediumDetailsReadService to System|Request NkMsisdnSearchService to System|Prepared input|Response GetBilledUsage from System|Message from System|Error during processing)
+
+ESB_COMPONENT [A-Za-z_.-]+
+ESB_COMPONENT2 [A-Za-z_\.\-0-9]+
+ESB_COMPONENT_SHORT [A-Za-z0-9_]+
+ESB_COMPONENT_KAFKA [A-Za-z0-9_]+\.[A-Za-z0-9_]+
+MODULE [A-Za-z_-]*
+MODULE_USER [A-Za-z_-].
+SERVICE %{CSTWORD}
+
+CSTLOGLEVEL (%{LOGLEVEL}|User|Info|Warn|Error)
+ALFNUMWORD [A-Za-z0-9]+

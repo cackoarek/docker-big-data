@@ -1,0 +1,36 @@
+name: test POST message
+
+# http://elastalert.readthedocs.io/en/latest/ruletypes.html#rule-types
+type: frequency
+
+index: bw.*
+
+num_events: 1
+
+timeframe:
+  hours: 2
+
+realert:
+  hours: 2
+
+# if time field other than "@timestamp" put name here:
+#timestamp_field: post_date
+
+# http://elastalert.readthedocs.io/en/latest/recipes/writing_filters.html#writingfilters
+filter:
+- query:
+    query_string:
+      query: "message:*"
+
+# if no filter, uncomment:
+#filter: []
+
+# http://elastalert.readthedocs.io/en/latest/ruletypes.html#alert
+# http://elastalert.readthedocs.io/en/latest/ruletypes.html#alerts
+alert:
+- "post"
+http_post_url: "http://requestbin.fullcontact.com/wcqjxywc"
+http_post_payload:
+  key: message
+http_post_static_payload:
+  apikey: abc123

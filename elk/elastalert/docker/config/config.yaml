@@ -1,0 +1,19 @@
+rules_folder: rules_folder
+
+run_every:
+  seconds: 40
+
+buffer_time:
+  minutes: 15
+
+es_host: elk_elasticsearch_1
+
+es_port: 9200
+
+es_username: admin
+es_password: admin
+
+writeback_index: elastalert
+
+alert_time_limit:
+  days: 2

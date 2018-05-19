@@ -1,0 +1,96 @@
+version: '3.5'
+
+services:
+
+  elasticsearch:
+    build:
+      context: elasticsearch/
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ~/elk-dir/data:/usr/share/elasticsearch/data:rw
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
+    networks:
+      - elk
+
+  logstash:
+    build:
+      context: logstash/
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - ./logstash/patterns:/usr/share/logstash/patterns:ro
+    ports:
+      - "5000:5000"
+    environment:
+      LS_JAVA_OPTS: "-Xmx2g -Xms1g"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    build:
+      context: kibana/
+    volumes:
+      - ./kibana/config/:/usr/share/kibana/config:ro
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  zookeeper:
+      image: wurstmeister/zookeeper
+      ports:
+        - "2181:2181"
+      networks:
+        - elk
+
+  kafka:
+      build:
+        context: kafka/
+      ports:
+        - "9092:9092"
+      networks:
+        - elk
+      environment:
+        KAFKA_ADVERTISED_HOST_NAME: elk_kafka_1
+        KAFKA_ZOOKEEPER_CONNECT: elk_zookeeper_1:2181
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      depends_on:
+        - zookeeper
+
+  filebeat:
+      build:
+        context: filebeat/
+      volumes:
+        - ./filebeat/logs:/usr/log-generator/logs:ro
+      networks:
+        - elk
+      depends_on:
+        - logstash
+
+#  elastalert:
+#        build:
+#          context: elastalert/docker/
+#        volumes:
+#          - ./elastalert/docker/config/rules_folder:/home/elastalert/rules_folder:ro
+#          - ./elastalert/docker/config/config.yaml:/home/elastalert/config.yaml:ro
+#          - ./elastalert/docker/config/smtp_auth_file.yaml:/home/elastalert/smtp_auth_file.yaml:ro
+#        networks:
+#          - elk
+#        depends_on:
+#          - elasticsearch
+#        tty: true
+
+
+networks:
+  elk:
+    driver: bridge
