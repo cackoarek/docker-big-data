@@ -6,9 +6,10 @@
 > Jeśli posiadasz windowsa należy poszukać sposobu na emulowanie dockera na tym systemie
 
 ### Uruchamianie:
-1. Należy wejść do folderu w którym umieszony jest plik `docker-compose.yml` (foler docker)
+1. Należy wejść do folderu w którym umieszony jest plik `docker-compose.yml` (folder docker)
+2. Uruchomić dockera: `docker-compose up`
 
-Przydatne komendy:
+Przydatne komendy Dockera:
 > `docker-compose build` - buduje obraz dockera
 
 > `docker-compose up` - uruchamia kontener z Hadoopem pokazując logi
@@ -93,8 +94,12 @@ na yarn:
 /usr/local/spark/bin/spark-submit --master yarn $SPARK_HOME/examples/src/main/python/pi.py 1000
 
 ```
+W logach po uruchomieniu powinien pojawić się adres serwisu prezentującego status wykonania zlecenia. Będzie również widoczne pod adresem: http://localhost:8088/cluster działającą aplikację.
 
-## Notatki
+## Znane problemy:
+Wchodząc np. na http://localhost:8088/cluster a następnie przy próbie podejrzenia logów worker'a może się zdarzyć, że link będzie zawierał zamiast `localhost` jakiś niezrozumiały link. Przy próbie ręcznej zamiany owego linka na `localhost` strona się otworzy. Najlepiej sobie z tym poradzić wpisując w /etc/hosts naszej maszyny lokalnej ten adres (127.0.0.1      asdf2324sasdf3fs)
+
+## Notatki jakie robiłem podczas konstruowania tego obrazu (dla innych mało ważne)
 
 Podegranie na kontener instalki Sparka
 > docker cp spark-2.3.0-bin-hadoop2.7 hadoop.2.7.1:/root/
