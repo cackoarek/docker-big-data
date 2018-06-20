@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+
+  hadoop-spark.2.7.1:
+    build:
+      context: ""
+    volumes:
+      - ./config/mapred-site.xml:/usr/local/hadoop/etc/hadoop/mapred-site.xml:rw
+      - ./config/yarn-site.xml:/usr/local/hadoop/etc/hadoop/yarn-site.xml:rw
+    ports:
+      - "50010:50010"
+      - "50020:50020"
+      - "50070:50070"
+      - "50075:50075"
+      - "50090:50090"
+      - "8020:8020"
+      - "9000:9000"
+      - "10020:10020"
+      - "19888:19888"
+      - "8030:8030"
+      - "8031:8031"
+      - "8032:8032"
+      - "8033:8033"
+      - "8040:8040"
+      - "8042:8042"
+      - "8088:8088"
+      - "49707:49707"
+      - "2122:2122"
+      - "4040:4040"
+    container_name: hadoop-spark.2.7.1
+

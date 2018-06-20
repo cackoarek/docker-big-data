@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  jupiter-spark:
+    build:
+      context: ./
+    container_name: jupyter-spark
+    volumes:
+      - ./notebooks/:/home/jovyan/:rw
+    ports:
+      - "8888:8888"
+    stdin_open: true
+    tty: true
+
+
+
