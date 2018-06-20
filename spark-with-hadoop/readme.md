@@ -6,7 +6,7 @@
 > Jeśli posiadasz windowsa należy poszukać sposobu na emulowanie dockera na tym systemie
 
 ### Uruchamianie:
-1. Należy wejść do folderu w którym umieszony jest plik `docker-compose.yml` (folder docker)
+1. Należy wejść do folderu w którym umieszony jest plik `docker-compose.yml` (folder spark-with-hadoop)
 2. Uruchomić dockera: `docker-compose up`
 
 Przydatne komendy Dockera:
