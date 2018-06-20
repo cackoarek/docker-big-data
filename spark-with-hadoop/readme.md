@@ -9,6 +9,8 @@
 1. Należy wejść do folderu w którym umieszony jest plik `docker-compose.yml` (folder spark-with-hadoop)
 2. Uruchomić dockera: `docker-compose up`
 
+Od tej chwili na dockerze wstanie Hadoop. Jego poprawność będzie widoczna poprzez wystawione serwisy wylistowane poniżej.
+
 Przydatne komendy Dockera:
 > `docker-compose build` - buduje obraz dockera
 
@@ -26,6 +28,7 @@ Przydatne komendy Dockera:
 
 Będąc zalogowanym na kontenerze (`docker exec -it hadoop.2.7.1 bash`) można wydać rozkaz:
 > `bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar grep input output 'dfs[a-z.]+'`
+spowoduje to odpalenie na Hadoopie zadania MapReduce - zapis będzie na HDFS po wykoniu zadania. Powyższe polecenie zadziała tylko raz gdyż Hadoop nie dopuści do pownownego zapisu wyników na tej samej ścieżce HDFS. Musisz najpierw usunąć poprzednie dane przez kolejną próbą.
 
 ### Serwisy wystawione przez dockera
 
