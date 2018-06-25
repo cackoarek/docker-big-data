@@ -18,7 +18,7 @@ Przydatne komendy Dockera:
 
 > `docker-compose up -d` - j.w. ale zwalnia konsolę
 
-> `docker exec -it hadoop.2.7.1 bash` - wchodzi na uruchomiony kontener
+> `docker exec -it hadoop-spark.2.7.1 bash` - wchodzi na uruchomiony kontener
 
 > `docker-compose stop` - zatrzymuje kontner
 
@@ -26,7 +26,7 @@ Przydatne komendy Dockera:
 
 ### Testowanie poprawności działania
 
-Będąc zalogowanym na kontenerze (`docker exec -it hadoop.2.7.1 bash`) można wydać rozkaz:
+Będąc zalogowanym na kontenerze (`docker exec -it hadoop-spark.2.7.1 bash`) można wydać rozkaz:
 > `bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar grep input output 'dfs[a-z.]+'`
 spowoduje to odpalenie na Hadoopie zadania MapReduce - zapis będzie na HDFS po wykoniu zadania. Powyższe polecenie zadziała tylko raz gdyż Hadoop nie dopuści do pownownego zapisu wyników na tej samej ścieżce HDFS. Musisz najpierw usunąć poprzednie dane przez kolejną próbą.
 
