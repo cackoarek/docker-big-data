@@ -1,4 +1,4 @@
-# Docker wraz z Hadoop 2.7.1
+# Docker wraz ze Spark i Hadoop 2.7.1
 
 ### Wymagania
 1. Należy zainstalować `docker`'a oraz `docker-compose`
