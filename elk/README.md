@@ -9,7 +9,7 @@ Wymagania
 Pozostała konfiguracja
 ----------------------
 (Opcjonalne) Jeśli chcesz aby dane w Elasticsearch nie były trzymane na kontenerze a na twojej maszynie lokalnej należy
-odkomentować w sekcji `volume` elasticsearch pliku `docker-compose.yml` finikję:
+odkomentować w sekcji `volume` elasticsearch pliku `docker-compose.yml` linijkę:
 > ~/elk-dir/data:/usr/share/elasticsearch/data:rw
 
 A następnie wykonać:
