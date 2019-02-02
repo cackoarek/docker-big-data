@@ -9,6 +9,7 @@ services:
       - ./notebooks/:/home/jovyan/:rw
     ports:
       - "8888:8888"
+      - "4040:4040"
     stdin_open: true
     tty: true
     hostname: localhost
