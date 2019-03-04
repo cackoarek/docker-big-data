@@ -3,6 +3,7 @@ FROM ubuntu:18.04
 
 ####installing [software-properties-common] so that we can use [apt-add-repository] to install Java8
 RUN apt-get update -y \
+&&  apt-get install -y sudo \
 &&  apt-get install software-properties-common -y \
 &&  apt-add-repository ppa:webupd8team/java -y \
 &&  apt-get update -y \
@@ -16,7 +17,7 @@ RUN apt-get update -y \
     supervisor
 
 
-####downloading & unpacking Spark 2.2.1 [prebuilt for Hadoop 2.6+ and scala 2.10]
+####downloading & unpacking Spark 2.4.0 [prebuilt for Hadoop 2.6+ and scala 2.10]
 RUN wget http://ftp.man.poznan.pl/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz \
 &&  tar -xzf spark-2.4.0-bin-hadoop2.7.tgz \
 &&  mv spark-2.4.0-bin-hadoop2.7 /opt/spark
@@ -26,6 +27,7 @@ RUN wget http://ftp.man.poznan.pl/apache/spark/spark-2.4.0/spark-2.4.0-bin-hadoo
 COPY master.conf /opt/conf/master.conf
 COPY slave.conf /opt/conf/slave.conf
 
+ENV PYSPARK_PYTHON /usr/bin/python3
 
 #######exposing port 8080 for spark master UI
 EXPOSE 8080
