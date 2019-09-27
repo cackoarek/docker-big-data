@@ -22,3 +22,6 @@ Kopiowanie z localhost na Jupytera:
 ## Dokumentacja
 Dostępna tutaj:
 > https://github.com/jupyter/docker-stacks/tree/master/all-spark-notebook
+
+### Plik konfiguracyjny Jupyter
+> /etc/jupyter/jupyter_notebook_config.py

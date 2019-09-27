@@ -15,6 +15,7 @@ services:
     hostname: localhost
     environment:
       GRANT_SUDO: "yes"
+#      JUPYTER_ENABLE_LAB: "yes"
     user: root
 
 
