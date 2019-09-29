@@ -7,6 +7,7 @@ services:
     container_name: jupyter-spark
     volumes:
       - ./notebooks/:/home/jovyan/:rw
+      - ./spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf:rw
     ports:
       - "8888:8888"
       - "4040:4040"
