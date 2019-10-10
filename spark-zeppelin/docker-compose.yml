@@ -1,0 +1,23 @@
+version: '2'
+services: 
+  zeppelin:
+    build: .
+    container_name: zeppelin
+    environment:
+      ZEPPELIN_PORT: 8090
+      ZEPPELIN_JAVA_OPTS: >-
+        -Dspark.driver.memory=1g
+        -Dspark.executor.memory=2g
+      MASTER: "local[*]"
+    ports:
+      - 8090:8090
+      - 4040:4040
+    volumes:
+      - ./data:/zeppelin/data
+      - ./notebook:/zeppelin/notebook
+      - ./logs:/zeppelin/logs
+
+# networks:
+#  default:
+#      external: 
+#        name: sparkcluster_default
