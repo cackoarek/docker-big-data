@@ -1,0 +1,13 @@
+version: '3.5'
+
+# https://hub.docker.com/r/apache/nifi
+# http://localhost:8080/nifi
+
+services:
+  nifi:
+    image: apache/nifi:latest
+    container_name: nifi
+    ports:
+      - "8080:8080"
+
+
