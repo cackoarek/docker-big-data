@@ -17,6 +17,7 @@ services:
     environment:
       GRANT_SUDO: "yes"
       JUPYTER_ENABLE_LAB: "yes"
+#      JUPYTER_RUNTIME_DIR: "/tmp"   # uncomment if problems with kernel start on Windows
     user: root
 
 
