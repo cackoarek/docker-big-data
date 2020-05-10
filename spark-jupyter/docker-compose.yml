@@ -10,7 +10,7 @@ services:
       - ./spark-defaults.conf:/usr/local/spark/conf/spark-defaults.conf:rw
     ports:
       - "8888:8888"
-      - "4040:4040"
+      - "4040-4090:4040-4090"
     stdin_open: true
     tty: true
     hostname: localhost
