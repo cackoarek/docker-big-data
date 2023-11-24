@@ -1,7 +1,7 @@
 version: '3.0'
 
 # https://hub.docker.com/r/apache/nifi
-# Wait about 1 minute and try login:
+# Wait about 1 minute and try login: (accept certificate)
 # https://localhost:8443/nifi/
 # login/password: admin/123456789012
 
