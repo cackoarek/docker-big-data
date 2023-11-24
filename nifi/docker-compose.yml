@@ -1,7 +1,10 @@
-version: '3.5'
+version: '3.0'
 
 # https://hub.docker.com/r/apache/nifi
-# http://localhost:8080/nifi
+# Wait about 1 minute and try login:
+# https://localhost:8443/nifi/
+# login/password: admin/123456789012
+
 
 services:
   nifi:
@@ -9,5 +12,8 @@ services:
     container_name: nifi
     ports:
       - "8080:8080"
-
+      - "8443:8443"
+    environment:
+      - SINGLE_USER_CREDENTIALS_USERNAME=admin
+      - SINGLE_USER_CREDENTIALS_PASSWORD=123456789012
 
