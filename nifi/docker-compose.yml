@@ -16,4 +16,5 @@ services:
     environment:
       - SINGLE_USER_CREDENTIALS_USERNAME=admin
       - SINGLE_USER_CREDENTIALS_PASSWORD=123456789012
-
+      - NIFI_WEB_HTTP_HOST=localhost # if deloyed on remote IP, change with public IP
+      - NIFI_WEB_PROXY_HOST=localhost:8443 # same here
